@@ -1,0 +1,239 @@
+﻿body{
+    padding-top: 0px;
+    padding-bottom: 20px;
+    background-image:url('images/background.png');
+    background-position:center;
+    background-size:cover;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.header.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    background-color: black;
+    border-color: white
+}
+header {
+    background-color: black;
+    border-color: white;
+    height:10%
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+}
+.logo{
+    width:150px;
+    margin-top:18px;
+
+}
+.content {
+    width: 100%;
+    position: relative;
+    top: 30%;
+    right:3%;
+    transform:translateY(-50%);
+    text-align:center;
+    color:#fff
+}
+.title{
+    font-size:60px;
+    line-height:100px;
+    font-weight:bold;
+    height: 100px;
+    text-align: left;
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    overflow:hidden;
+}
+.content p {
+    margin:20px auto;
+    font-family: sans-serif;
+    line-height: 25px;
+    font-weight: 100;
+}
+.button {
+    padding: 15px 25px;
+    margin: 20px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border: 2px solid #ffc107;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(to right, transparent 50%,#ffc107 50%);
+    background-size: 200%;
+    background-position: left;
+    transition: background-position 0.5s;
+}
+.button {
+    background-position: right;
+    color: #000;
+}
+
+    .slider{
+        color:#ffc107;
+        margin-left: 12px;
+        box-sizing:border-box;
+        animation: slider 6s linear infinite;
+    }
+
+    @keyframes slider{
+        0%{ margin-top: -400px;}
+        5% {
+            margin-top: -200px;
+        }
+        30% {
+            margin-top: -200px;
+        }
+        35% {
+            margin-top: 0px
+        }
+        65% {
+            margin-top: 0px;
+        }
+        70% {
+            margin-top: 200px;
+        }
+        100% {
+            margin-top: 200px;
+        }
+
+    }
+.movie-details p {
+    margin: 3% 0;
+    font-size: 14px !important;
+}
+.left-box{
+    color:#fff;
+    padding:20px;
+}
+.casting img{
+    width:40px;
+    height:40px;
+    margin-right:10px;
+    cursor:pointer;
+    transition: 1s;
+}
+.casting img:hover{
+    transform:translateY(-10px);
+}
+.left-box a {
+    text-decoration: none !important;
+    border-radius: 20px;
+    padding: 7px 20px;
+    margin-top: 35px;
+    color: paleturquoise !important;
+    background:#107afd;
+    font-weight:600;
+    display:inline-block;
+    margin-right:10px;
+}
+.download-button{
+    border:1px solid #fff;
+    background:transparent !important;
+}
+.play-button {
+    border: 1px solid #fff;
+    background: transparent !important;
+}
+.fa{
+    margin: 0 5px;
+}
+.movie-img{
+    height:400px;
+    box-shadow:-4px 4px 5px 0 #000;
+    width:350px;
+    margin-top:5px;
+}
+.popular-movies{
+    color:azure;
+}
+.popular-movies img{
+    width:100%;
+    margin-top:15px;
+    box-shadow:-4px 4px 5px 0 #000;
+    cursor:pointer;
+    transition:1s;
+}
+.popular-movies img:hover{
+    transform:translateY(-10px);
+}
+.new-movies {
+    color: azure;
+}
+.new-movies img {
+    width: 100%;
+    margin-top: 15px;
+    box-shadow: -4px 4px 5px 0 #000;
+    cursor: pointer;
+    transition: 1s;
+}
+.new-movies img:hover {
+    transform: translateY(-10px);
+}
+
+.old-movies {
+    color: azure;
+}
+.old-movies img {
+        width: 100%;
+        margin-top: 15px;
+        box-shadow: -4px 4px 5px 0 #000;
+        cursor: pointer;
+        transition: 1s;
+    }
+.old-movies img:hover {
+            transform: translateY(-10px);
+        }
+.cheap-movies {
+    color: azure;
+}
+.cheap-movies img {
+        width: 100%;
+        margin-top: 15px;
+        box-shadow: -4px 4px 5px 0 #000;
+        cursor: pointer;
+        transition: 1s;
+    }
+.cheap-movies img:hover {
+    transform: translateY(-10px);
+}
+.Order-Header{
+    color:black;
+    
+
+}
+/*.card-header {
+    background-color: white;
+    padding: 70px;
+}
+.card-body{
+    width:1000px;
+    padding-left:70px;
+*/}

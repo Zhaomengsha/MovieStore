@@ -1,0 +1,16 @@
+﻿@model BetaMovieStore.Models.Database.Movie
+
+<div class="container">
+            <tr>
+                <td>@Model.Title</td>
+                <td>@Model.Director</td>
+                <td>@Model.ReleaseYear</td>
+                <td>@Model.Genre</td>
+                <td>@Model.Price</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+                </td>
+            </tr>
+</div>
+

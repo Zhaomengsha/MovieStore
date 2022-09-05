@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BetaMovieStore.Models.Database.Movie>
+
+@{
+    //ViewBag.Title = "Index";
+    ViewData["Index"] = "List of Movies";
+}
+
+<br />
+<h2 style="color:ghostwhite">All Movies</h2>
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 col-lg-4  border-primary mb-3">
+            <div class="card mb-3" style="max-width:540px;">
+                <div class="row g-0">
+                    <div class=" col-md-12">
+                        <div class="card-header text-white bg-black">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @item.Title
+                                    <a class="text-white float-right"><i class="bi bi-pencil-square"></i></a>
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="@item.Image" width="100%" ; height="250" alt="@item.Title" />
+                    </div>
+                    @*<div class="col-12 col-md-6 col-lg-4">*@
+                    <div class="col-6">
+                        <div class="card-body" style="color:black">
+
+                            <p class="card-text"><b>Title: </b> @item.Title</p>
+                            <p class="card-text"><b>Director: </b> @item.Director</p>
+                            <p class="card-text"><b>Release Year: </b> @item.ReleaseYear</p>
+                            <p class="card-text"><b>Genre: </b> @item.Genre</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class=" card-footer">
+                            <p class="card-text">
+                                <a id="btn_add" href="@Url.Action("Add","AddToCart",item)" class="btn btn-success text-white"><i class="bi bi-cart-plus"></i>Add to Cart (Price @item.Price.ToString("c"))</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

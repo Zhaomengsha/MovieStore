@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <script src="https://kit.fontawesome.com/2aa954dc65.js" crossorigin="anonymous"></script>
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" id="logo" href="@Url.Action("Index", "Home")">
+
+                <img src="~/Data/Logos/BETALOGODIFF1.PNG" alt="" width="90" height="40">
+
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+
+
+                    <li>@Html.ActionLink("Popular", "Statistics", "Home", null, new { @class = "nav-link active" })</li>
+
+                    <li>@Html.ActionLink("Movies", "Index", "Movie", null, new { @class = "nav-link active" })</li>
+
+                    <li>@Html.ActionLink("Administrator", "Index", "Administrator", null, new { @class = "nav-link active" })</li>
+
+                    <li>@Html.ActionLink("Register", "Index", "Register", null, new { @class = "nav-link active" })</li>
+
+                </ul>     
+                <ul>
+                <li class="nav navbar-nav navbar-nav-right">
+                    <a href="@Url.Action("Myorder", "AddToCart")" class="btn btn-outline-info position-relative">
+                        <span class="fa-solid fa-cart-plus" style="color:ghostwhite"></span> <span class="position-absolute top-23 start-100 translate-middle badge rounded-pill bg-danger">@Session["count"]</span>
+                    </a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content" style="color:ghostwhite">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - BETA Group</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

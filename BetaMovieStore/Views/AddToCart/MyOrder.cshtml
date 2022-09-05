@@ -1,0 +1,199 @@
+﻿@model IEnumerable<BetaMovieStore.ViewModel.CartVM>
+@{
+
+
+    ViewData["Index"] = "My Order";
+}
+<br />
+<br />
+<h2>
+    Your Shopping Basket
+</h2>
+
+
+<section class="h-100 h-custom">
+    <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            @{if (Session["cart"] == null)
+                {
+                    <div class="col">
+
+                        <div class="table-responsive">
+                            <table class="table " style="color:ghostwhite">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="h5">Items</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div class="d-flex aligns-items-center justify-content-center" style="height:100px">
+                                <p>There are currently no items in your basket.</p>
+                            </div>
+                            <hr />
+                            @*<a class="btn btn-outline-warning" href="@Url.Action("index", "Movie")">
+                            CONTINUE SHOPPING
+                        </a>*@
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col">
+
+                        <div class="table-responsive">
+                            <table class="table table-dark" style="color:ghostwhite">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="h5">Items</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col" class="text-center">Quantity</th>
+                                        <th scope="col">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@item.Image" class="img-fluid rounded-3"
+                                                         style="width: 120px; height:120px" alt="Movie">
+                                                    <div class="flex-column ms-4">
+                                                        <p class="mb-2">@item.Title</p>
+
+                                                    </div>
+                                                </div>
+                                            </th>
+
+                                            <td class="align-middle">
+                                                <p class="mb-0" style="font-weight: 500;">@item.Price</p>
+                                            </td>
+
+                                            <td class="align-middle ">
+                                                <div class="d-flex flex-row aligns-items-center justify-content-center">
+                                                    <a class="btn btn-link px-2" href="@Url.Action("DecreaseBt", "AddToCart", item)"><i class="fas fa-minus"></i></a>
+
+                                                    <input id="form1" min="0" name="quantity" value="@item.Quantity" type="number"
+                                                           class="form-control form-control-sm" style="width: 50px;" />
+                                                    <a class="btn btn-link px-2" href="@Url.Action("IncreaseBt", "AddToCart", item)"><i class="fas fa-plus"></i></a>
+
+                                                </div>
+                                            </td>
+                                            <td class="align-middle">
+                                                @{
+                                                    decimal tmp = item.Price * item.Quantity;
+                                                    <p class="mb-0" style="font-weight: 500;">@tmp</p>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td>   </td>
+                                        <td>   </td>
+                                        <td><h5>Basket Subtotal: </h5></td>
+                                        <td class="text-right">
+                                            <h5>
+                                                <strong>
+                                                    @{ decimal sum = 0;
+                                                        foreach (var item in Model)
+                                                        {
+                                                            sum += (item.Quantity * item.Price);
+                                                        }
+                                                        <p class="mb-0" style="font-weight: 500;">@sum</p>
+                                                    }
+                                                </strong>
+                                            </h5>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                                <!--<tfoot>
+                                <tr>
+                                <td>
+                                <a class="btn btn-outline-warning" href="@Url.Action("index", "Movie")">
+                                    CONTINUE SHOPPING
+                                </a>
+                                </td>
+                                <td> </td>
+                                 <td> </td>
+                                <td>-->
+                                @*<a class="btn btn-outline-success text-end" href="@Url.Action("CheckOut", "AddToCart", item)">
+                                CHECK OUT
+                                </a>*@
+
+                                <!--</td>
+                                </tr>
+                                </tfoot>-->
+                                @*<br />
+                                <br />*@
+                                @using (Html.BeginForm("CheckOut", "AddToCart", FormMethod.Post, new { id = "customer-form" }))
+                                {
+                                    <div class="row d-flex justify-content-center align-items-center h-100">
+
+                                        <div class="table-responsive">
+                                            <table class="table table-dark table-borderless " style="color:ghostwhite">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th scope="col" class="h5">Existing Customers</th>
+                                                        <th scope="col">New Customers</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <label for="InputEmail1" class="form-label">Email address</label>
+                                                        <input type="email" class="form-control" id="Email" name="Email" aria-describedby="emailHelp">
+                                                        @{if (BetaMovieStore.Controllers.AddToCartController.newCustomer == false)
+                                                            {
+                                                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div id="emailHelp" class="form-text">Please register as a new customer!</div>
+                                                            }
+                                                        }
+                                                    </td>
+                                                    <td><a class="btn btn-group-lg btn-outline-light" href="@Url.Action("Index","Register")">Register</a></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <input type="submit" class="btn btn-default btn-outline-warning" value="Process Order"/>
+                                                        
+                                                    </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                }
+            }
+        <div>
+            <a class="btn btn- btn-outline-warning" href="@Url.Action("index", "Movie")">
+                CONTINUE SHOPPING
+            </a>
+        </div>
+        </div>
+    </div>
+</section>
+ 
+<br />
+<br />
+<br />
+
+

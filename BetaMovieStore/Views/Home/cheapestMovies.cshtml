@@ -1,0 +1,10 @@
+﻿@model IEnumerable<BetaMovieStore.Models.Database.Movie>
+    <div>
+        @foreach(var movie in Model)
+            {
+
+                 @Html.Partial("_MoviePartial",movie)
+            }
+
+
+    </div>
